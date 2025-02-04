@@ -1,0 +1,88 @@
+﻿<Page x:Class="RequestsCourse.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RequestsCourse.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="MainPage">
+
+    <Border Background="#ffffff">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel Width="500"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock Margin="10 0 0 0" Foreground="#000000" Text="Поиск по фамилии" FontSize="12"
+                                   Padding="5 5"/>
+                        <TextBox Margin="5 0 5 0" x:Name="TxtSearch" TextChanged="TxtSearch_TextChanged"
+                                 Width="300" FontSize="12" Padding="5 5"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <DataGrid Name="DtgRequest" IsReadOnly="True"
+                              Margin="3" CanUserSortColumns="True"
+                              AutoGenerateColumns="False" CanUserReorderColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Название заявки" Width="*" Binding="{Binding Title}"/>
+                            <DataGridTextColumn Header="Описание заявки" Width="*" Binding="{Binding Description}"/>
+                            <DataGridTextColumn Header="Дата создания" Width="*" Binding="{Binding CreatedAt, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                            <DataGridTextColumn Header="Статус заявки" Width="*" Binding="{Binding Statuses.StatusName}"/>
+                            <DataGridTextColumn Header="Фамилия клиента" Width="*" Binding="{Binding Clients.FirstName}"/>
+                            <DataGridTextColumn Header="Имя клиента" Width="*" Binding="{Binding Clients.LastName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+                    <Button x:Name="ResetFilters" Content="Сбросить фильтры" Height="25" FontSize="14"
+                            Margin="10" Foreground="#5a5a5a" Click="ResetFilters_Click"
+                            Width="200"/>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBlock Text="Диапазон дат создания заявок"/>
+                        <DatePicker x:Name="StartDate" Height="25" FontSize="14" Margin="5"
+                                    Foreground="#5a5a5a" Width="200"
+                                    SelectedDateFormat="Short" ToolTip="Дата начала"/>
+                        <DatePicker x:Name="EndDate" Height="25" FontSize="14" Margin="5"
+                                    Foreground="#5a5a5a" Width="200"
+                                    SelectedDateFormat="Short" ToolTip="Дата конца"/>
+                        <Button Content="Применить" x:Name="Apply" Height="25" FontSize="14"
+                                Margin="5" Foreground="#5a5a5a" Width="200"
+                                Click="Apply_Click"/>
+                        <Button x:Name="AddRequest" Content="Добавить заявку" Height="25"
+                            FontSize="14"
+                            Width="200" Margin="10" Foreground="#5a5a5a" Click="AddRequest_Click"/>
+                        <Button x:Name="DelRequest" Content="Удалить заявку" Height="25" 
+                            Width="200" FontSize="14"
+                            Margin="10" Foreground="#5a5a5a" Click="DelRequest_Click"/>
+                        <Button x:Name="EditRequest" Content="Редактировать заявку" Height="25"
+                            Width="200" Margin="10" Foreground="#5a5a5a" Click="EditRequest_Click"
+                            FontSize="14"/>
+                        <Button Content="Список клиентов" Height="25" FontSize="14"
+                            Width="200" Margin="10 10 10 10" Foreground="#5a5a5a"
+                            x:Name="BtnListClient" Click="BtnListClient_Click"/>
+                        <Button Content="Отчет по заявкам" Height="25" FontSize="14"
+                            Width="200" Margin="10" Foreground="#5a5a5a"
+                            x:Name="BtnStaticReq" Click="BtnStaticReq_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Page>
