@@ -38,8 +38,8 @@
                             <DataGridTextColumn Header="Описание заявки" Width="*" Binding="{Binding Description}"/>
                             <DataGridTextColumn Header="Дата создания" Width="*" Binding="{Binding CreatedAt, StringFormat=\{0:dd.MM.yyyy\}}"/>
                             <DataGridTextColumn Header="Статус заявки" Width="*" Binding="{Binding Statuses.StatusName}"/>
-                            <DataGridTextColumn Header="Фамилия клиента" Width="*" Binding="{Binding Clients.FirstName}"/>
-                            <DataGridTextColumn Header="Имя клиента" Width="*" Binding="{Binding Clients.LastName}"/>
+                            <DataGridTextColumn Header="Фамилия клиента" Width="*" Binding="{Binding Clients.LastName}"/>
+                            <DataGridTextColumn Header="Имя клиента" Width="*" Binding="{Binding Clients.FirstName}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

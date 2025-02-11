@@ -34,9 +34,9 @@
                               Margin="3" CanUserSortColumns="True"
                               AutoGenerateColumns="False" CanUserReorderColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Фамилия клиента" Width="*" Binding="{Binding FirstName}"/>
-                            <DataGridTextColumn Header="Имя клиента" Width="*" Binding="{Binding LastName}"/>
-                            <DataGridTextColumn Header="Почта клиента" Width="*" Binding="{Binding Email}"/>
+                            <DataGridTextColumn Header="Фамилия клиента" Width="*" Binding="{Binding Clients.LastName}"/>
+                            <DataGridTextColumn Header="Имя клиента" Width="*" Binding="{Binding Clients.FirstName}"/>
+                            <DataGridTextColumn Header="Почта клиента" Width="*" Binding="{Binding Clients.Email}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -52,7 +52,7 @@
                             Margin="10" Foreground="#5a5a5a" Click="ResetFilters_Click"
                             Width="200"/>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                        <TextBlock Text="Диапазон дат создания заявок"/>
+                        <!--<TextBlock Text="Диапазон дат создания заявок"/>
                         <DatePicker x:Name="StartDate" Height="25" FontSize="14" Margin="5"
                                     Foreground="#5a5a5a" Width="200"
                                     SelectedDateFormat="Short" ToolTip="Дата начала"/>
@@ -61,7 +61,7 @@
                                     SelectedDateFormat="Short" ToolTip="Дата конца"/>
                         <Button Content="Применить" x:Name="Apply" Height="25" FontSize="14"
                                 Margin="5" Foreground="#5a5a5a" Width="200"
-                                Click="Apply_Click"/>
+                                Click="Apply_Click"/>-->
                         <Button x:Name="AddClient" Content="Добавить клиента" Height="25"
                             FontSize="14"
                             Width="200" Margin="10" Foreground="#5a5a5a" Click="AddClient_Click"/>

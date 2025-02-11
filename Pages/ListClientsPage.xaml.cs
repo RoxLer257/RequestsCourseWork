@@ -22,7 +22,7 @@ namespace RequestsCourse.Pages
         public ListClientsPage()
         {
             InitializeComponent();
-            DtgClients.ItemsSource = WebAgencyRequestsEntities.GetContext().Clients.ToList();
+            DtgClients.ItemsSource = WebAgencyRequestsEntities.GetContext().Requests.ToList();
             CheckUserRole();
         }
 
@@ -49,47 +49,47 @@ namespace RequestsCourse.Pages
 
         private void ResetFilters_Click(object sender, RoutedEventArgs e)
         {
-            StartDate.SelectedDate = null;
-            EndDate.SelectedDate = null;
+            //StartDate.SelectedDate = null;
+            //EndDate.SelectedDate = null;
             DtgClients.ItemsSource = WebAgencyRequestsEntities.GetContext().Clients.ToList();
             TxtSearch.Text = "";
         }
 
-        private void Apply_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DateTime? startDate = StartDate.SelectedDate;
-                DateTime? endDate = EndDate.SelectedDate;
+        //private void Apply_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        DateTime? startDate = StartDate.SelectedDate;
+        //        DateTime? endDate = EndDate.SelectedDate;
 
-                if (startDate > endDate)
-                {
-                    MessageBox.Show("Дата начала не может быть позже даты окончания!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+        //        if (startDate > endDate)
+        //        {
+        //            MessageBox.Show("Дата начала не может быть позже даты окончания!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //            return;
+        //        }
 
-                var query = WebAgencyRequestsEntities.GetContext().Requests
-                    .Include(ra => ra.Clients)
-                    .Include(r => r.Statuses)
-                    .AsQueryable();
+        //        var query = WebAgencyRequestsEntities.GetContext().Requests
+        //            .Include(ra => ra.Clients)
+        //            .Include(r => r.Statuses)
+        //            .AsQueryable();
 
-                if (startDate.HasValue)
-                {
-                    query = query.Where(ra => ra.CreatedAt >= startDate.Value);
-                }
+        //        if (startDate.HasValue)
+        //        {
+        //            query = query.Where(ra => ra.CreatedAt >= startDate.Value);
+        //        }
 
-                if (endDate.HasValue)
-                {
-                    query = query.Where(ra => ra.CreatedAt <= endDate.Value);
-                }
+        //        if (endDate.HasValue)
+        //        {
+        //            query = query.Where(ra => ra.CreatedAt <= endDate.Value);
+        //        }
 
-                DtgClients.ItemsSource = query.ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при фильтрации по дате: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        //        DtgClients.ItemsSource = query.ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Ошибка при фильтрации по дате: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
 
         private void BtnListRequests_Click(object sender, RoutedEventArgs e)
         {
